@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-700 my-2">{% block title %}Nuevo Mensaje{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<form method="post" action="{{url_for('inbox.send')}}" class="px-4">
+  <div class="form-group">
+    <label for="to">Para</label>
+    <input type="text" class="form-control" placeholder="Para" name="to" id="to" required>
+    <small class="form-text text-muted">Para</small>
+  </div>
+  <div class="form-group">
+    <label for="subject">Asunto</label>
+    <input type="text" name="subject" id="subject" class="form-control rounded-md mb-2" required>
+  </div>
+
+  <div class="form-group">
+    <label for="body">Mensaje</label>
+    <textarea name="body" id="body" rows="3" class="form-control" required ></textarea>
+  </div>
+  <input type="submit" value="Enviar mensaje" class="btn btn-primary w-full bg-indigo-500 text-white rounded-md py-2 cursor-pointer">
+  
+</form>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-700 my-2">{% block title %}Messages{% endblock %}</h2>
+  {% if g.user %}
+    <div class="flex justify-end">
+      <a class="action btn btn-primary" href="{{ url_for('inbox.send') }}">Nuevo</a>
+      <a class="action btn btn-primary" href="{{ url_for('inbox.getDB') }}">descargar DB</a>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  {% for message in messages %}
+  <div class="card bg-light mb-3" >
+    <div class="card-header">{{ message['subject'] }} </div>
+    <div class="card-body">
+      <p class="fw-light fromb">De {{ message['username'] }} el {{ message['created'].strftime('%Y-%m-%d') }}</p>
+      <p class="card-text leerbox">{{ message['body'] }}</p>
+    </div>
+  </div>
+  {% endfor %}
+{% endblock %}
+
+

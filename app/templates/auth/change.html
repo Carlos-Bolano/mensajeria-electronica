@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2 class="text-slate-700 my-2">{% block title %}Nueva Clave{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+  <form method="post" action="{{ url_for('auth.confirm')}}" class="px-4">
+    <label for="password">Type your new password</label>
+    <div class="form-group">
+      <label for="password">Nueva Clave</label>
+      <input type="password" name="password" id="password" class="rounded-md mb-6 form-control" required
+        placeholder="Clave">
+    </div>
+
+    <div class="form-group">
+      <label for="password1">Confirme su Clave</label>
+      <input type="password" name="password1" id="password1" class="rounded-md mb-6 form-control" required
+        placeholder="Repita Clave">
+    </div>
+
+    <input type="hidden" id="authid" name="authid" value={{number}}>
+    <input type="submit" value="Enviar" class="btn btn-primary w-full bg-indigo-500 text-white rounded-md py-2 cursor-pointer">
+  </form>
+   
+{% endblock %}
+
